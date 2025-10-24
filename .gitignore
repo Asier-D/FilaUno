@@ -1,0 +1,28 @@
+# Eclipse
+/.classpath
+/.project
+/.settings/
+
+# Maven
+/target/
+
+# Archivos compilados
+*.class
+
+# Logs
+*.log
+
+# Carpetas de compilación
+target/
+build/
+
+# IDEs
+*.idea/
+*.iml
+*.classpath
+*.project
+*.settings/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
