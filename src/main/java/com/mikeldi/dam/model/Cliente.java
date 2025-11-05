@@ -3,18 +3,36 @@ package com.mikeldi.dam.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Cliente {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="cliente")
+public class Cliente {
+	
+	@Id
     private Long id;
+    @Column
     private String nombreFiscal;
+    @Column
     private String cifNif;
+    @Column
     private String email;
+    @Column
     private String telefono;
+    @Column
     private String direccion;
+    @Column
     private String ciudad;
+    @Column
     private String cp;
+    @Column
     private String pais;
+    @Column
     private LocalDateTime fechaAlta;
+    @Column
     private boolean activo;
 
     public Cliente() {
