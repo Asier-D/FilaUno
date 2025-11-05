@@ -2,12 +2,25 @@ package com.mikeldi.dam.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="usuario")
 public class Usuario {
+	@Id
 	private long id;
+	@Column
 	private String nombre;
+	@Column
 	private String email;
+	@Column
 	private String passwordHash;
+	@Column
 	private boolean activo;
+	@Column
 	private LocalDateTime fechaAlta;
 	
 	public Usuario() {

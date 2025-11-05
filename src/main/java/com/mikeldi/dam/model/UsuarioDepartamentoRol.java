@@ -1,9 +1,19 @@
 package com.mikeldi.dam.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="usuario_departamento_rol")
 public class UsuarioDepartamentoRol {
+	@Id
 	private long id_usuario; //podria ser Usuario usuario
+	@Id
 	private long id_rol;
+	@Id
 	private long id_departamento;
+	
 	
 	public UsuarioDepartamentoRol(long id_usuario, long id_rol, long id_departamento) {
 		super();
