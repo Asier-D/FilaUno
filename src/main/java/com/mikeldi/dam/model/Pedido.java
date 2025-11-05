@@ -3,6 +3,13 @@ package com.mikeldi.dam.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="pedido")
 public class Pedido {
 
     public enum EstadoPedido {
@@ -11,13 +18,20 @@ public class Pedido {
         ENVIADO,
         CANCELADO
     }
-
+    
+    @Id
     private Long id;
+    @Column
     private LocalDateTime fechaPedido;
+    @Column
     private EstadoPedido estado;
+    @Column
     private BigDecimal totalSinImpuestos;
+    @Column
     private BigDecimal totalIva;
+    @Column
     private BigDecimal totalConImpuestos;
+    @Column
     private LocalDateTime fechaActualizacion;
 
     public Pedido() {

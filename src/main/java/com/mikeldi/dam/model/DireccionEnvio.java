@@ -2,16 +2,31 @@ package com.mikeldi.dam.model;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="direccionenvio")
 public class DireccionEnvio implements Serializable {
 
+	@Id
     private Long id;
+	@Column
     private String nombreContacto;
+	@Column
     private String direccion;
+	@Column
     private String ciudad;
+	@Column
     private String pais;
+	@Column
     private String cp;
+	@Column
     private String telefonoContacto;
 
+    
     public DireccionEnvio() {
     }
 
