@@ -1,40 +1,66 @@
 package com.mikeldi.dam.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name="usuario_rol")
+@IdClass(UsuarioRol.UsuarioRolId.class)
 public class UsuarioRol {
-	@Id
-	private long id_usuario; //podria ser Usuario usuario
-	@Id
-	private long id_rol;
-	
-	public UsuarioRol(long id_usuario, long id_rol) {
-		super();
-		this.id_usuario = id_usuario;
-		this.id_rol = id_rol;
-	}
+    @Id
+    private long idUsuario;
+    
+    @Id
+    private long idRol;
+    
+    public UsuarioRol() {}
+    
+    public UsuarioRol(long idUsuario, long idRol) {
+        this.idUsuario = idUsuario;
+        this.idRol = idRol;
+    }
 
-	public long getId_usuario() {
-		return id_usuario;
-	}
-	
-	//no se si el set es necesario
-	public void setId_usuario(long id_usuario) {
-		this.id_usuario = id_usuario;
-	}
+    // Getters y setters
+    public long getIdUsuario() {
+        return idUsuario;
+    }
 
-	public long getId_rol() {
-		return id_rol;
-	}
-	
-	//no se si el set es necesario
-	public void setId_rol(long id_rol) {
-		this.id_rol = id_rol;
-	}
-	
-	
+    public void setIdUsuario(long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public long getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(long idRol) {
+        this.idRol = idRol;
+    }
+
+    // Clase interna para la clave compuesta, si no, no se puede hacer bien al tener 2 ids
+    public static class UsuarioRolId implements Serializable {
+        private long idUsuario;
+        private long idRol;
+
+        public UsuarioRolId() {}
+
+        public UsuarioRolId(long idUsuario, long idRol) {
+            this.idUsuario = idUsuario;
+            this.idRol = idRol;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            UsuarioRolId that = (UsuarioRolId) o;
+            return idUsuario == that.idUsuario && idRol == that.idRol;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(idUsuario, idRol);
+        }
+    }
 }
