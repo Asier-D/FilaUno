@@ -1,14 +1,29 @@
 package com.mikeldi.dam.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="linea_pedido")
 public class LineaPedido {
 
+	@Id
 	private long id;
+	@Column
 	private int cantidad;
+	@Column
 	private String descripcionProducto;
+	@Column
 	private double precioUnitario;
+	@Column
 	private double ivaPorcentaje;
+	@Column
 	private double subtotalSinImpuestos;
+	@Column
 	private double subtotalIva;
+	@Column
 	private double subtotalConImpuestos;
 	
 	public LineaPedido(long id, int cantidad, String descripcionProducto, double precioUnitario, double ivaPorcentaje,
