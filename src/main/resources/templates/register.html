@@ -2,16 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Registro</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h2>Registrarse</h2>
-  <form method="post" action="/register">
-    Nombre: <input type="text" name="nombre" required><br>
-    Email: <input type="email" name="email" required><br>
-    Contraseña: <input type="password" name="password" required><br>
-    <button type="submit">Registrar</button>
-  </form>
-  <p th:if="${error}" th:text="${error}" style="color:red"></p>
-  <a href="/login">Iniciar sesión</a>
+  <div class="container">
+    <h2>Registrarse</h2>
+
+    <form method="post" action="/register">
+      Nombre:
+      <input type="text" name="nombre" required>
+
+      Email:
+      <input type="email" name="email" required>
+
+      Contraseña:
+      <input type="password" name="password" required>
+
+      <button type="submit">Registrar</button>
+    </form>
+
+    <p th:if="${error}" th:text="${error}" class="error"></p>
+
+    <a href="/login">Iniciar sesión</a>
+  </div>
 </body>
 </html>
+

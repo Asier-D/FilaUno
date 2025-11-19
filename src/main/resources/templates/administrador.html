@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Inicio</title>
+  <title>Inicio Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h2>Bienvenido Administrador, <span th:text="${usuario.nombre}">Usuario</span>!</h2>
-  <a href="/logout">Cerrar sesión</a>
+  <div class="welcome">
+    <h2>
+      Bienvenido Administrador,
+      <span th:text="${usuario.nombre}">Usuario</span>!
+    </h2>
+
+    <a href="/logout">Cerrar sesión</a>
+  </div>
 </body>
 </html>

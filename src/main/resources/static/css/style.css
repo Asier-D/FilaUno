@@ -1,0 +1,92 @@
+/* ==== RESET ==== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+/* ==== BODY ==== */
+body {
+    background: #f4f6f8;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==== CONTENEDOR ==== */
+.container, .welcome {
+    background: white;
+    padding: 35px 40px;
+    width: 350px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+/* ==== TITULOS ==== */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* ==== FORMULARIOS ==== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    transition: border 0.2s;
+}
+
+input:focus {
+    border-color: #3b82f6;
+    outline: none;
+}
+
+/* ==== BOTONES ==== */
+button {
+    padding: 12px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #2563eb;
+}
+
+/* ==== ENLACES ==== */
+a {
+    margin-top: 15px;
+    display: block;
+    text-align: center;
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ==== ERRORES ==== */
+.error {
+    color: #dc2626;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
