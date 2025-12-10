@@ -2,9 +2,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title th:text="${usuario.orElse(null)?.nombre}">Insert title here</title>
 </head>
 <body>
-	<h1>Hola Usuario</h1>
+	<div class="container">
+		<div class="row justify-content-center align-items-start mt-5 mb-4">
+
+			<div class="col-8">
+				<h1 class="text-center">
+					<span th:text="${usuario.orElse(null)?.nombre}"></span> <!-- Thymeleaf no sabe cómo manejar Optional directamente, por ello se hace esto para desempaquetarlo -->
+				</h1>
+			</div>
+		</div>
+		<div
+			class="row justify-content-center align-items-start mt-2 border border-dark shadow-lg border-4 rounded pb-4">
+			<div class="col-6 mt-5" th:each= "ur : ${listaURoles}" >
+				<h5>
+					Rol: <span th:text="${ur.rol.nombre}"></span>
+				</h5>
+				<h5>
+					Descripcion: <span th:text="${ur.rol.descripcion}"></span>
+				</h5>
+				
+			</div>
+		</div>
+	</div>
+		
 </body>
+	
 </html>

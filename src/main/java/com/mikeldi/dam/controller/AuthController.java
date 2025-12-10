@@ -10,8 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.component.PeliculaComp;
-import com.example.demo.models.entity.Pelicula;
+
 import com.mikeldi.dam.model.Rol;
 import com.mikeldi.dam.model.Usuario;
 import com.mikeldi.dam.model.UsuarioRol;
@@ -120,6 +119,10 @@ public class AuthController {
     	Long id = Long.valueOf(usuID);
         Optional<Usuario> user = usuarioRepository.findById(id);
         model.addAttribute("usuario", user);
+        
+        //Enviar una lista de usuarioRol
+        List<UsuarioRol> listaUR = usuariorolRepository.findByIdUsuario(id);
+        model.addAttribute("listaURoles", listaUR);
         
         return "usuario";
     }
