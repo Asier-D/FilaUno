@@ -13,17 +13,17 @@ public class Rol {
 	@Column
 	private String nombre;
 	@Column
-	private String descirpcion;
+	private String descripcion;
 	
 	public Rol() {
 		super();
 	}
 
-	public Rol(long id, String nombre, String descirpcion) {
+	public Rol(long id, String nombre, String descripcion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.descirpcion = descirpcion;
+		this.descripcion = descripcion;
 	}
 
 	public long getId() {
@@ -42,12 +42,12 @@ public class Rol {
 		this.nombre = nombre;
 	}
 
-	public String getDescirpcion() {
-		return descirpcion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setDescirpcion(String descirpcion) {
-		this.descirpcion = descirpcion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 	

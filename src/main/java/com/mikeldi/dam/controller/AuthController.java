@@ -120,6 +120,10 @@ public class AuthController {
         Optional<Usuario> user = usuarioRepository.findById(id);
         model.addAttribute("usuario", user);
         
+        //Enviar una lista de usuarioRol
+        List<UsuarioRol> listaUR = usuariorolRepository.findByIdUsuario(id);
+        model.addAttribute("listaURoles", listaUR);
+        
         return "usuario";
     }
 
