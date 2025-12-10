@@ -10,8 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.component.PeliculaComp;
-import com.example.demo.models.entity.Pelicula;
+
 import com.mikeldi.dam.model.Rol;
 import com.mikeldi.dam.model.Usuario;
 import com.mikeldi.dam.model.UsuarioRol;
