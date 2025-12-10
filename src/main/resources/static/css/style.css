@@ -1,110 +1,15 @@
-/* ==== RESET ==== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-}
-
-/* ==== BODY ==== */
-body {
-    background: #f4f6f8;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 30px 10px;
-}
-
-/* ==== CONTENEDOR PRINCIPAL ==== */
-.welcome, .container {
-    background: white;
-    padding: 35px 40px;
-    width: 90%;
-    max-width: 1200px;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    overflow-x: auto;
-}
-
-/* ==== TITULOS ==== */
-h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    font-weight: 600;
-    color: #1f2937;
-}
-
-/* ==== FORMULARIOS ==== */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-input {
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #d1d5db;
-    background: #f9fafb;
-    transition: border 0.2s;
-}
-
-input:focus {
-    border-color: #3b82f6;
-    outline: none;
-}
-
-/* ==== BOTONES ==== */
-button, .btn {
-    padding: 8px 14px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.btn-dark, button {
-    background-color: #333;
-    color: white;
-}
-
-.btn-dark:hover, button:hover {
-    background-color: #555;
-}
-
-/* ==== ENLACES ==== */
-a {
-    display: block;
-    text-align: center;
-    color: #3b82f6;
-    text-decoration: none;
-    font-size: 14px;
-    margin-top: 15px;
-    transition: 0.3s;
-}
-
-a:hover {
-    color: #2563eb;
-    text-decoration: underline;
-}
-
-/* ==== ERRORES ==== */
-.error {
-    color: #dc2626;
-    text-align: center;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-/* ==== TABLA ==== */
+/* ==== TABLA MEJORADA ==== */
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     margin-bottom: 20px;
-    table-layout: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    font-size: 14px;
+    min-width: 600px;
 }
 
 th, td {
@@ -116,43 +21,57 @@ th {
     background-color: #4CAF50;
     color: white;
     font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
-tr:nth-child(even) {
+td {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tr:nth-child(even) td {
     background-color: #f9f9f9;
 }
 
-tr:hover {
+tr:hover td {
     background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
 }
 
-/* ==== BADGES DE ROL ==== */
-.rol-badge {
-    display: inline-block;
-    background-color: #2196F3;
-    color: white;
-    padding: 4px 10px;
-    margin: 2px 2px 2px 0;
-    border-radius: 12px;
-    font-size: 12px;
+/* ==== PEQUEÑOS AJUSTES ==== */
+caption {
+    caption-side: top;
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+table th:first-child, table td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+table th:last-child, table td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 /* ==== RESPONSIVE ==== */
 @media screen and (max-width: 768px) {
-    body {
-        padding: 20px 10px;
-        align-items: center;
-    }
-
-    table, .welcome {
-        width: 100%;
+    table {
+        display: block;
         overflow-x: auto;
+        min-width: unset;
     }
 
     th, td {
         padding: 10px;
+        font-size: 13px;
     }
 }
+
 
 
 
