@@ -113,7 +113,7 @@ public class AuthController {
     }
     
     
-    @RequestMapping(value = "/usuario", method = RequestMethod.GET)
+    @RequestMapping(value = "/usuario", method = RequestMethod.POST)
     public String verPelisUsuario(@RequestParam("usuarioID") String usuID, Model model) {
         // Aquí recibes el imdbID y puedes buscar la película
     	Long id = Long.valueOf(usuID);

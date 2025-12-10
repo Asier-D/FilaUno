@@ -1,3 +1,241 @@
+/* ==== RESET ==== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+/* ==== BODY ==== */
+body {
+    background: #f4f6f8;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==== CONTENEDOR ==== */
+.container, .welcome {
+    background: white;
+    padding: 35px 40px;
+    width: 350px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+/* ==== CONTENEDOR ADMINISTRADOR ==== */
+/* Cuando la clase welcome contiene una tabla, se expande  (no creo que se necesite, pero mejor)*/
+.welcome:has(table) {
+    width: 90%;
+    max-width: 1000px;
+    padding: 30px;
+}
+
+/* Alternativa si :has() no funciona en tu navegador */
+.welcome-admin {
+    background: white;
+    padding: 30px;
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+/* Contenedor para la tabla con scroll */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+/* Ajustes al título cuando hay tabla */
+.welcome h2 {
+    margin-bottom: 20px;
+}
+
+/* Asegurar que la tabla no se salga */
+.welcome table {
+    margin: 20px 0;
+}
+
+/* ==== RESPONSIVE MEJORADO ==== */
+@media screen and (max-width: 1100px) {
+    .welcome:has(table),
+    .welcome-admin {
+        width: 95%;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .welcome:has(table),
+    .welcome-admin {
+        width: 98%;
+        padding: 15px;
+    }
+    
+    .welcome h2 {
+        font-size: 18px;
+    }
+}
+
+/* ==== TITULOS ==== */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* ==== FORMULARIOS ==== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    transition: border 0.2s;
+}
+
+input:focus {
+    border-color: #3b82f6;
+    outline: none;
+}
+
+/* ==== BOTONES ==== */
+button {
+    padding: 12px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #2563eb;
+}
+
+/* ==== ENLACES ==== */
+a {
+    margin-top: 15px;
+    display: block;
+    text-align: center;
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ==== ERRORES ==== */
+.error {
+    color: #dc2626;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/*PERFIL*/
+
+/* ==== PERFIL: CONTENEDOR GENERAL ==== */
+.profile-container {
+    background: white;
+    padding: 40px 50px;
+    width: 450px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* ==== FOTO DE PERFIL ==== */
+.profile-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
+    color: #6b7280;
+    user-select: none;
+}
+
+/* ==== TITULO PRINCIPAL ==== */
+.profile-container h2 {
+    margin-bottom: 5px;
+}
+
+/* ==== BLOQUE DE INFORMACIÓN ==== */
+.profile-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-row {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 15px;
+    background: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+}
+
+.profile-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+
+.profile-value {
+    font-size: 16px;
+    color: #1f2937;
+    font-weight: 500;
+}
+
+/* ==== BOTÓN DE VOLVER / EDITAR ==== */
+.profile-actions {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.profile-actions a,
+.profile-actions button {
+    flex: 1;
+    text-decoration: none;
+}
+
+/* Variante de botón secundario */
+.btn-secondary {  
+    color: #FFFFFF;
+    margin: 0 auto;
+}
+
+
+
+
+
 /* ==== TABLA MEJORADA ==== */
 table {
     width: 100%;

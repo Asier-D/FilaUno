@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <div class="welcome">
+  <div class="welcome-admin">
     <h2>
       Bienvenido Administrador,
       <span th:text="${usuario.nombre}">Usuario</span>!
@@ -35,8 +35,8 @@
             				</div>
           				</td>
           				<td>
-							<form th:action="@{/usuario}" th:object="${administrador}"
-								th:method="get">
+							<form th:action="@{/usuario}" 
+								th:method="post">
 								<input type="hidden" th:value="${usuarioR.id}" th:name="usuarioID"
 									th:id="usuarioID" /> <input class="btn btn-dark" type="submit"
 									value="i" />
