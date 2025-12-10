@@ -8,4 +8,5 @@ import com.mikeldi.dam.model.UsuarioRol;
 @Repository
 public interface UsuarioRolRepository extends JpaRepository<UsuarioRol, UsuarioRol.UsuarioRolId> {
     List<UsuarioRol> findByIdUsuario(long idUsuario);
+    List<UsuarioRol> findAll();
 }

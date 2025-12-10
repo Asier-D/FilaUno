@@ -1,6 +1,8 @@
 package com.mikeldi.dam.controller;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.demo.component.PeliculaComp;
+import com.example.demo.models.entity.Pelicula;
 import com.mikeldi.dam.model.Rol;
 import com.mikeldi.dam.model.Usuario;
 import com.mikeldi.dam.model.UsuarioRol;
@@ -93,10 +97,31 @@ public class AuthController {
     }
     @GetMapping("/administrador")
     public String mostrarAdministrador(HttpSession session, Model model) {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+    	Usuario usuario = (Usuario) session.getAttribute("usuario");
         if (usuario == null) return "redirect:/login";
+        
+        // Enviar todos los usuarios
+        List<Usuario> todosUsuarios = usuarioRepository.findAll();
+        
+        // Enviar todos los UsuarioRol para poder buscar los roles
+        List<UsuarioRol> listaUR = usuariorolRepository.findAll();
+        
         model.addAttribute("usuario", usuario);
+        model.addAttribute("usuariosLista", todosUsuarios);
+        model.addAttribute("usuarioRoles", listaUR);
+        
         return "administrador";
+    }
+    
+    
+    @RequestMapping(value = "/usuario", method = RequestMethod.GET)
+    public String verPelisUsuario(@RequestParam("usuarioID") String usuID, Model model) {
+        // Aquí recibes el imdbID y puedes buscar la película
+    	Long id = Long.valueOf(usuID);
+        Optional<Usuario> user = usuarioRepository.findById(id);
+        model.addAttribute("usuario", user);
+        
+        return "usuario";
     }
 
     @GetMapping("/logout")
@@ -104,5 +129,7 @@ public class AuthController {
         session.invalidate();
         return "redirect:/login";
     }
+    
+    
 }
 

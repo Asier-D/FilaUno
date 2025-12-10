@@ -10,6 +10,52 @@
       Bienvenido Administrador,
       <span th:text="${usuario.nombre}">Usuario</span>!
     </h2>
+    <table>
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Email</th>
+						<th>Activo</th>
+						<th>Rol</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="usuarioR : ${usuariosLista}">
+						
+						<td th:text="${usuarioR.nombre}"></td>
+          				<td th:text="${usuarioR.email}"></td>
+          				<td th:text="${usuarioR.activo ? 'Sí' : 'No'}"></td>
+          				<td>
+            				<div class="roles-list">
+              					<!-- Iterar sobre todos los UsuarioRol y mostrar solo los que coinciden con este usuario -->
+              					<span th:each="ur : ${usuarioRoles}" 
+                    				  th:if="${ur.idUsuario == usuarioR.id}">
+                					<span class="rol-badge" th:text="${ur.rol.nombre}"></span>
+              					</span>
+            				</div>
+          				</td>
+          				<td>
+							<form th:action="@{/usuario}" th:object="${administrador}"
+								th:method="get">
+								<input type="hidden" th:value="${usuarioR.id}" th:name="usuarioID"
+									th:id="usuarioID" /> <input class="btn btn-dark" type="submit"
+									value="i" />
+							</form></td>
+          				
+						<!-- 
+						<td th:text="${item.runtime}"></td>
+						<td><h4>
+								<span th:text="${item.Title}">
+							</h4>
+							<form th:action="@{/peli/verPelisUsuario}" th:object="${peli}"
+								th:method="get">
+								<input type="hidden" th:value="${item.imdbID}" th:name="imdbID"
+									th:id="imdbID" /> <input class="btn btn-dark" type="submit"
+									value="i" />
+							</form></td> -->
+					</tr>
+				</tbody>
+			</table>
 
     <a href="/logout">Cerrar sesión</a>
   </div>

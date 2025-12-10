@@ -14,6 +14,15 @@ public class UsuarioRol {
     @Id
     private long idRol;
     
+    // Esta parte para que pueda acceder a los usuarios solo teniendo los ids en el html
+    @ManyToOne
+    @JoinColumn(name = "idUsuario", insertable = false, updatable = false)
+    private Usuario usuario;
+    
+    @ManyToOne
+    @JoinColumn(name = "idRol", insertable = false, updatable = false)
+    private Rol rol;
+    
     public UsuarioRol() {}
     
     public UsuarioRol(long idUsuario, long idRol) {
@@ -37,6 +46,22 @@ public class UsuarioRol {
     public void setIdRol(long idRol) {
         this.idRol = idRol;
     }
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
 
     // Clase interna para la clave compuesta, si no, no se puede hacer bien al tener 2 ids
     public static class UsuarioRolId implements Serializable {
