@@ -8,11 +8,12 @@ import java.util.Objects;
 @Table(name="usuario_rol")
 @IdClass(UsuarioRol.UsuarioRolId.class)
 public class UsuarioRol {
+	@Id
+    private long idRol;
     @Id
     private long idUsuario;
     
-    @Id
-    private long idRol;
+    
     
     // Esta parte para que pueda acceder a los usuarios solo teniendo los ids en el html
     @ManyToOne

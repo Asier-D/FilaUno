@@ -18,6 +18,7 @@ import com.mikeldi.dam.repository.RolRepository;
 import com.mikeldi.dam.repository.UsuarioRepository;
 import com.mikeldi.dam.repository.UsuarioRolRepository;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -49,7 +50,7 @@ public class AuthController {
         	List<UsuarioRol> listaRol = usuariorolRepository.findByIdUsuario(usuario.getId());
         	if (!listaRol.isEmpty()) {
 				for (UsuarioRol usuarioRol : listaRol) {
-					Rol rolVer = rolRepository.findById(usuarioRol.getIdRol());
+					Rol rolVer = rolRepository.findRolById(usuarioRol.getIdRol());
 					if (rolVer.getNombre().equals("Administrador")) {
 						session.setAttribute("usuario", usuario);
 						return "redirect:/administrador";
@@ -95,9 +96,15 @@ public class AuthController {
         return "home";
     }
     @GetMapping("/administrador")
-    public String mostrarAdministrador(HttpSession session, Model model) {
+    public String mostrarAdministrador(HttpSession session, Model model, HttpServletResponse response) {
     	Usuario usuario = (Usuario) session.getAttribute("usuario");
         if (usuario == null) return "redirect:/login";
+        
+     // Evitar cache del navegador
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+
         
         // Enviar todos los usuarios
         List<Usuario> todosUsuarios = usuarioRepository.findAll();
@@ -114,10 +121,10 @@ public class AuthController {
     
     
     @RequestMapping(value = "/usuario", method = RequestMethod.POST)
-    public String verPelisUsuario(@RequestParam("usuarioID") String usuID, Model model) {
+    public String verUsuario(@RequestParam("usuarioID") String usuID, Model model) {
         // Aquí recibes el imdbID y puedes buscar la película
     	Long id = Long.valueOf(usuID);
-        Optional<Usuario> user = usuarioRepository.findById(id);
+        Usuario user = usuarioRepository.findUsuarioById(id);
         model.addAttribute("usuario", user);
         
         //Enviar una lista de usuarioRol

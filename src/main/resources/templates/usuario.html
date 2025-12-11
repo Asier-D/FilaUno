@@ -2,21 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title th:text="${usuario.orElse(null)?.nombre}">Insert title here</title>
+<title th:text="${usuario.nombre}">Insert title here</title>
+<link rel="stylesheet" href="/css/usuarioStyle.css">
 </head>
 <body>
-	<div class="profaile-container">
-		<div class="row justify-content-center align-items-start mt-5 mb-4">
+	<div class="profile-container">
+		<div class="header-section">
 
-			<div class="col-8">
-				<h1 class="text-center">
-					<span th:text="${usuario.orElse(null)?.nombre}"></span> <!-- Thymeleaf no sabe cómo manejar Optional directamente, por ello se hace esto para desempaquetarlo -->
-				</h1>
-			</div>
+			<div></div>
+			<h1>
+				<span th:text="${usuario.nombre}">Usuario</span>
+			</h1>
+			<button class="btn-add-role" onclick="openModal()">Añadir Rol</button>
 		</div>
-		<div
-			class="row justify-content-center align-items-start mt-2 border border-dark shadow-lg border-4 rounded pb-4">
-			<div class="col-6 mt-5" th:each= "ur : ${listaURoles}" >
+		<!-- <div
+			class="roles-container">
+			<div id="alertContainer"></div>
+			<div class="role-card" th:each= "ur : ${listaURoles}" >
 				<h5>
 					Rol: <span th:text="${ur.rol.nombre}"></span>
 				</h5>
@@ -26,8 +28,53 @@
 				
 			</div>
 		</div>
-	</div>
+	</div>  -->
 		
+		
+	<div class="roles-container">
+			<div id="alertContainer"></div>
+			
+			<div id="rolesList">
+				<!-- Los roles se cargarán dinámicamente con JavaScript -->
+			</div>
+			
+			<div id="emptyState" class="empty-state" style="display: none;">
+				<h3>No tienes roles asignados</h3>
+				<p>Haz clic en "Añadir Rol" para comenzar</p>
+			</div>
+		</div>
+		<div id="botonVolverContainer">
+			<form th:action="@{/administrador}" >
+				<input class="btn btn-dark" type="submit" value="Volver" />
+			</form>
+		</div>
+	</div>
+
+	<!-- Modal para añadir rol -->
+	<div id="roleModal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Añadir Nuevo Rol</h2>
+				<span class="close" onclick="closeModal()">&times;</span>
+			</div>
+			<form id="roleForm" onsubmit="addRole(event)">
+				<div class="form-group">
+					<label for="roleSelect">Selecciona un Rol:</label>
+					<select id="roleSelect" required>
+						<option value="">-- Selecciona un rol --</option>
+					</select>
+				</div>
+				<button type="submit" class="btn-submit" id="submitBtn">Asignar Rol</button>
+			</form>
+		</div>
+	</div>
+	
+	
+	
+	<script th:inline="javascript">
+    	const usuarioId = /*[[${usuario != null ? usuario.id : null}]]*/ null;
+	</script>
+	<script src="/script/usuarioScript.js" defer></script>
 </body>
 	
 </html>
