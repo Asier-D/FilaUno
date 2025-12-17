@@ -6,7 +6,10 @@
   
 </head>
 <body>
-  <h2>Bienvenido, <span th:text="${usuario.nombre}">Usuario</span>!</h2>
+  <h2>Bienvenido, <span th:text="${usuario.nombre}">Usuario</span>!</h2><br>
+  <div>
+  <a href="/perfil">Mi perfil</a>
   <a href="/logout">Cerrar sesión</a>
+  </div>
 </body>
 </html>

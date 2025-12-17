@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mi perfil</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="profile-container">
+
+    <div class="profile-avatar">
+        <span th:text="${usuario.nombre.substring(0,1)}"></span>
+    </div>
+
+    <h2>Mi Perfil</h2>
+
+    <div class="profile-info">
+
+        <div class="profile-row">
+            <span class="profile-label">Nombre</span>
+            <span class="profile-value" th:text="${usuario.nombre}"></span>
+        </div>
+
+        <div class="profile-row">
+            <span class="profile-label">Email</span>
+            <span class="profile-value" th:text="${usuario.email}"></span>
+        </div>
+
+        <div class="profile-row">
+            <span class="profile-label">Activo</span>
+            <span class="profile-value" 
+                  th:text="${usuario.activo ? 'Sí' : 'No'}"></span>
+        </div>
+
+        <div class="profile-row">
+            <span class="profile-label">Fecha de alta</span>
+            <span class="profile-value" th:text="${usuario.fechaAlta}"></span>
+        </div>
+
+    </div>
+
+    <div class="profile-actions">
+        <button><a href="/home" class="btn-secondary">Volver</a></button>
+    </div>
+</div>
+
+</body>
+</html>

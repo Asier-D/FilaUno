@@ -1,6 +1,7 @@
 package com.mikeldi.dam.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,6 +85,7 @@ public class AuthController {
         nuevo.setEmail(email);
         nuevo.setPasswordHash(passwordEncoder.encode(password));
         nuevo.setActivo(true);
+        nuevo.setFechaAlta(LocalDateTime.now());
         usuarioRepository.save(nuevo);
         return "redirect:/login";
     }
@@ -140,6 +142,18 @@ public class AuthController {
         return "redirect:/login";
     }
     
+    //Perfil
+    @GetMapping("/perfil")
+    public String mostrarPerfil(HttpSession session, Model model) {
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+
+        if (usuario == null) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("usuario", usuario);
+        return "perfil"; // Nombre de la vista Thymeleaf o JSP
+    }
     
 }
 
